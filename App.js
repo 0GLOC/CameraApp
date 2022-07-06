@@ -1,7 +1,7 @@
-import App from "./src";
+import Route from "./src";
 
 export default function App() {
   return (
-    <App/>
+    <Route/>
   );
 };

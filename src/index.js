@@ -1,19 +1,5 @@
-import { StyleSheet, Text, View } from 'react-native';
+import AppNavigator from './navigation/index';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>APP</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+export default function Route() {
+  return <AppNavigator/>
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

@@ -1,6 +1,7 @@
 import React from "react";
-import { Platform } from "react-native";
+import { Platform, TouchableOpacity } from "react-native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import IonicIcons from '@expo/vector-icons/Ionicons'
 import PlaceListScreen from "../screens/PlaceListScreen";
 import PlaceDetailScreen from "../screens/PlaceDetailScreen";
 import NewPlaceScreen from "../screens/NewPlaceScreen";
@@ -25,7 +26,18 @@ const PlaceNavigator = () => (
             <Stack.Screen 
             name="Place" 
             component={PlaceListScreen} 
-            options={{ title: 'Direcciones' }}
+            options={({ navigation }) => ({
+                title: 'Direcciones',
+                headerRight: () => (
+                    <TouchableOpacity onPress={() => navigation.navigate('NewPlace')}>
+                        <IonicIcons 
+                            name = "add-circle-outline"
+                            color = { colors.white }
+                            size = { 24 }
+                        />
+                    </TouchableOpacity>
+                )
+            })}
             />
             <Stack.Screen 
             name="PlaceDetail" 

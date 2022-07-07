@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
 const PlaceListScreen = ({ navigation }) => {
     return (
         <View style={styles.container}>
-            <Text>MapScreen</Text>
+            <Text>PlaceListScreen</Text>
         </View>
     );
 };

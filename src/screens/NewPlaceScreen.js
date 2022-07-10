@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { StyleSheet, Text, TextInput, ScrollView, View, Button } from "react-native";
 import { useDispatch } from "react-redux";
 import ImageSelector from "../components/ImageSelector";
+import LocationSelector from "../components/LocationSelector";
 import { savePlace } from "../store/place.slices";
 import colors from "../utils/colors";
 
@@ -30,6 +31,8 @@ const NewPlaceScreen = ({ navigation }) => {
                     onImage={(image) => {
                         setImage(image);
                     }}
+                />
+                <LocationSelector
                 />
                 <Button 
                 title="Grabar Dirección" 

@@ -3,7 +3,7 @@ import * as FileSystem from 'expo-file-system';
 import Place from "../models/Place";
 
 const initialState = {
-    places: [{}],
+    places: [],
 };
 
 const placeSlice = createSlice({
@@ -11,7 +11,11 @@ const placeSlice = createSlice({
     initialState,
     reducers: {
         addPlace: (state, action) => {
-            const newPlace = new Place(Date.now(), action.payload.title, action.payload.image);
+            const newPlace = new Place(
+                Date.now(), 
+                action.payload.title, 
+                action.payload.image
+            );
             state.places.push(newPlace);
         }
     },

@@ -29,6 +29,8 @@ const styles = StyleSheet.create({
 });
 
 const LocationSelector = ({ onLocation }) => {
+    const navigation = useNavigation();
+    const route = useRoute();
     const [pickedLocation, setPickedLocation] = useState();
 
     const handleGetLocation = async () => {
@@ -66,6 +68,27 @@ const LocationSelector = ({ onLocation }) => {
         return true;
     }
 
+    const handlePickLocation = async () => {
+        const isLocationGranted = await verifyPermissions();
+        if(!isLocationGranted) return;
+        navigation.navigate('Map')
+    }
+
+    const mapLocation = route?.params?.mapLocation;
+
+    useEffect(() => {
+        if(mapLocation) {
+            setPickedLocation({
+                lat: mapLocation.latitude,
+                lng: mapLocation.longitude,
+            });
+            onLocation({
+                lat: mapLocation.latitude,
+                lng: mapLocation.longitude,
+            });
+        }
+    }, [mapLocation])
+
     return (
         <View style={styles.container}>
             <MapPreview 
@@ -74,7 +97,10 @@ const LocationSelector = ({ onLocation }) => {
             >
                 <Text>Esperando ubicación...</Text>
             </MapPreview>
-            <Button title="Obtener ubicación" onPress={handleGetLocation} color={colors.three}/>
+            <View style={styles.buttons}>
+                <Button title="Obtener ubicación" onPress={handleGetLocation} color={colors.three}/>
+                <Button title="Elegir del mapa" onPress={handlePickLocation} color={colors.three} />
+            </View>
         </View>
     )
 }

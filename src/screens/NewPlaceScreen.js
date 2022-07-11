@@ -15,7 +15,7 @@ const NewPlaceScreen = ({ navigation }) => {
     const handleTitleChange = (text) => setTitle(text);
 
     const handleSave = () => {
-        dispatch(savePlace(title, image));
+        dispatch(savePlace(title, image, location));
         navigation.navigate('Place')
     }
 

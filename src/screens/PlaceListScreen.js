@@ -17,14 +17,13 @@ const styles = StyleSheet.create({
 
 const PlaceListScreen = ({ navigation }) => {
     const places = useSelector((state) => state.place.places);
-    console.log(places)
 
     const onSelectPlace = (place) => {
         navigation.navigate('PlaceDetail', { placeId: place.id });
     }
 
     const renderItem = ({ item }) => {
-        return <PlaceItem {...item} address='123 Street, City, Country' onSelect={onSelectPlace}/>
+        return <PlaceItem {...item} onSelect={onSelectPlace}/>
     };
 
     const ListEmptyComponent = () => {

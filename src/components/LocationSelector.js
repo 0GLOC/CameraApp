@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { View, Button, Text, StyleSheet, Alert } from "react-native";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import * as Location from "expo-location";
+import MapPreview from "./MapPreview";
 import colors from '../utils/colors';
 
 const styles = StyleSheet.create({
@@ -28,7 +29,7 @@ const styles = StyleSheet.create({
 });
 
 const LocationSelector = ({ onLocation }) => {
-    const [pickedLocation, setPickedLocation] = React.useState();
+    const [pickedLocation, setPickedLocation] = useState();
 
     const handleGetLocation = async () => {
         const isLocationGranted = await verifyPermissions();
@@ -67,13 +68,12 @@ const LocationSelector = ({ onLocation }) => {
 
     return (
         <View style={styles.container}>
-            <View style={styles.preview}>
-                {pickedLocation ? (
-                    <Text>{`latitud: ${pickedLocation.lat}, longitud: ${pickedLocation.lng}`}</Text>
-                ) : (
-                    <Text>Esperando ubicación...</Text>
-                )}
-            </View>
+            <MapPreview 
+            style={styles.preview}
+            location={pickedLocation}
+            >
+                <Text>Esperando ubicación...</Text>
+            </MapPreview>
             <Button title="Obtener ubicación" onPress={handleGetLocation} color={colors.three}/>
         </View>
     )

@@ -47,7 +47,7 @@ const ImageSelector = ({ onImage }) => {
           </View>
           <Button
             title="Tomar Foto"
-            color={colors.four}
+            color={colors.two}
             onPress={handleTakeImage}
           />
         </View>

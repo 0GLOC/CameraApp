@@ -10,12 +10,17 @@ const NewPlaceScreen = ({ navigation }) => {
     const dispatch = useDispatch();
     const [title, setTitle] = useState("");
     const [image, setImage] = useState();
+    const [location, setLocation] = useState();
 
     const handleTitleChange = (text) => setTitle(text);
 
     const handleSave = () => {
         dispatch(savePlace(title, image));
         navigation.navigate('Place')
+    }
+
+    const onLocationPicked = (location) => {
+        setLocation(location);
     }
 
     return (
@@ -32,8 +37,7 @@ const NewPlaceScreen = ({ navigation }) => {
                         setImage(image);
                     }}
                 />
-                <LocationSelector
-                />
+                <LocationSelector onLocation={onLocationPicked}/>
                 <Button 
                 title="Grabar Dirección" 
                 color={colors.five} 

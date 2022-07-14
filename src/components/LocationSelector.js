@@ -60,14 +60,14 @@ const LocationSelector = ({ onLocation }) => {
             Alert.alert(
                 "Permisos Insuficientes",
                 "Por favor, habilita la localización para continuar",
-                [{ text: "Ok" }]
+                [{ text: "Okay" }]
             );
             return false;
         }
 
         return true;
     }
-
+    
     const handlePickLocation = async () => {
         const isLocationGranted = await verifyPermissions();
         if(!isLocationGranted) return;
@@ -91,15 +91,12 @@ const LocationSelector = ({ onLocation }) => {
 
     return (
         <View style={styles.container}>
-            <MapPreview 
-            style={styles.preview}
-            location={pickedLocation}
-            >
-                <Text>Esperando ubicación...</Text>
+            <MapPreview location={pickedLocation} style={styles.preview}>
+                <Text>Esperando ubicacion...</Text>
             </MapPreview>
             <View style={styles.buttons}>
-                <Button title="Obtener ubicación" onPress={handleGetLocation} color={colors.three}/>
-                <Button title="Elegir del mapa" onPress={handlePickLocation} color={colors.three} />
+            <Button title="Obtener ubicacion" onPress={handleGetLocation} color={colors.four} />
+            <Button title="Elegir del mapa" onPress={handlePickLocation} color={colors.four} />
             </View>
         </View>
     )

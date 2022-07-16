@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import * as FileSystem from 'expo-file-system';
 import Place from "../models/Place";
 import { URL_GEOCODING } from "../utils/maps";
-import { insertAddress } from '../db/index'
+import { insertAddress, fetchAddress } from '../db/index'
 
 const initialState = {
   places: [],

@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FlatList, StyleSheet, Text, View } from "react-native";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { loadPlaces } from '../store/place.slices'
 import PlaceItem from "../components/PlaceItem";
 
 const styles = StyleSheet.create({
@@ -16,6 +17,7 @@ const styles = StyleSheet.create({
 });
 
 const PlaceListScreen = ({ navigation }) => {
+    const dispatch = useDispatch();
     const places = useSelector((state) => state.place.places);
 
     const onSelectPlace = (place) => {
@@ -33,6 +35,10 @@ const PlaceListScreen = ({ navigation }) => {
             </View>
         )
     }
+
+    useEffect(() => {
+        dispatch(loadPlaces());
+    }, []);
 
     return (
         <FlatList
